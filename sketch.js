@@ -1,9 +1,11 @@
 let map;
+let mover;
 
 function setup() {
   // put setup code here
   createCanvas(800, 800);
   map = new PlayArea(25, 25);
+  mover = new Mover(5,5);
 
   noStroke();
 
@@ -43,7 +45,13 @@ class PlayArea {
       for (var z = 0; z < this.size.y; z++) {
         //this.map[i][z] = (i%2==0&&z%2==0) ? true : false;
 
-        
+        if (i%2==0&&z%2==0){
+          continue;
+        }
+        if((i>=(safeX-safeR)&&i<=(safeX+safeR))&&(z>=(safeY-safeR)&&z<=(safeY+safeR))){
+          continue;
+        }
+        this.map[i][z] = random([true,false]);
       }
     }
   }
@@ -69,4 +77,18 @@ class PlayArea {
   }
 
 
+}
+
+class Mover {
+  constructor(startX,startY) {
+    this.pos = createVector(startX,startY);
+
+  }
+  update(){
+
+  }
+  show(){
+    fill(255,0,0);
+    circle(this.pos.x*map.widthF,this.pos.y*map.heightF,10);
+  }
 }
