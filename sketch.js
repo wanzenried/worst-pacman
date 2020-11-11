@@ -2,6 +2,14 @@ let map;
 let mover;
 let ratio;
 let tiles = 25;
+let level;
+let steps = 0;
+
+function preload() {
+  level = loadImage("/start_map.bmp");
+  if (level)
+    console.log("level is loaded");
+}
 
 function setup() {
   // put setup code here
@@ -9,8 +17,8 @@ function setup() {
   ratioW = width / tiles;
   ratioH = height / tiles;
   map = new PlayArea(tiles, tiles);
-  mover = new Mover(3, 3);
-
+  mover = new Mover(12, 12);
+  textSize(32);
 
   noStroke();
 
@@ -21,6 +29,9 @@ function draw() {
   background(200);
   map.show();
   mover.show();
+  fill(0, 255, 255);
+  text("steps: " + steps, 650, 70);
+
 }
 
 function keyReleased() {
@@ -57,8 +68,9 @@ class PlayArea {
     for (let i = 0; i < this.size.x; i++) {
       this.map[i] = [];
       for (let z = 0; z < this.size.y; z++) {
-        this.map[i][z] = (i % 2 == 0 && z % 2 == 0) ? true : random([true, false]);
 
+        //this.map[i][z] = (i % 2 == 0 && z % 2 == 0) ? true : random([true, false]);
+        this.map[i][z] = level.get(i, z)[0] == 0;
 
 
       }
@@ -79,6 +91,8 @@ class PlayArea {
         this.map[i][z] = random([true, false]);
       }
     }
+    this.map[15][24] = false;
+    this.map[15][23] = false;
   }
 
   show() {
@@ -90,6 +104,8 @@ class PlayArea {
         //this.map[i][z] = true;
         fill((this.map[i][z]) ? 50 : 150);
         rect(i * ratioW, z * ratioH, ratioW, ratioH);
+        fill(0, 255, 0);
+        rect(15 * ratioW, 24 * ratioH, ratioW, ratioH);
 
 
 
@@ -110,7 +126,10 @@ class Mover {
     if (!map.map[(this.pos.x + moveX)][(this.pos.y + moveY)]) {
       this.pos.x += moveX;
       this.pos.y += moveY;
-      map.shuffle(this.pos.x, this.pos.y, 2);
+      if (steps > 4) {
+        map.shuffle(this.pos.x, this.pos.y, 1);
+      }
+      steps++;
     }
 
   }
