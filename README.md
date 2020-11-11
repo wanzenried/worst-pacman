@@ -7,6 +7,6 @@ the goal of this project is to produce a version of pacman, which will be worse,
 * the map changes all the time (i plan to implement this by randomizing the maze everytime the player moves)
 
 
-## thing i want t learn during this project:
+## thing i want to learn during this project:
 * [ ] real time graphics changing
 * [ ] real time solids/boundaries/physics changing
