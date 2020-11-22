@@ -4,6 +4,7 @@ let ratio;
 let tiles = 21;
 let level;
 let steps = 0;
+let p;
 
 function preload() {
   level = loadImage("/map_tiled.bmp");
@@ -18,6 +19,7 @@ function setup() {
   ratioH = height / tiles;
   map = new PlayArea(tiles, tiles);
   mover = new Mover(tiles/2-0.5, tiles/2-0.5);
+  p = new Pathfinder();
   textSize(32);
 
   noStroke();
