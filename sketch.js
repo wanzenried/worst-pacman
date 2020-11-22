@@ -1,12 +1,12 @@
 let map;
 let mover;
 let ratio;
-let tiles = 25;
+let tiles = 21;
 let level;
 let steps = 0;
 
 function preload() {
-  level = loadImage("/start_map.bmp");
+  level = loadImage("/map_tiled.bmp");
   if (level)
     console.log("level is loaded");
 }
@@ -17,7 +17,7 @@ function setup() {
   ratioW = width / tiles;
   ratioH = height / tiles;
   map = new PlayArea(tiles, tiles);
-  mover = new Mover(12, 12);
+  mover = new Mover(tiles/2-0.5, tiles/2-0.5);
   textSize(32);
 
   noStroke();
