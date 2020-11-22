@@ -34,6 +34,23 @@ function draw() {
 
 }
 
+function createmappng(sizeX, sizeY, time = 0) {
+
+  let c = createCanvas(sizeX, sizeY);
+  background(255);
+  fill(0);
+  stroke(0);
+  for (var i = 0; i < sizeX; i++) {
+    for (var j = 0; j < sizeY; j++) {
+      if (j % 2 == 0 && i % 2 == 0) {
+        point(i, j);
+      }
+    }
+  }
+  saveCanvas(c, "map.png");
+  setup();
+}
+
 function keyReleased() {
   switch (keyCode) {
     case UP_ARROW:
