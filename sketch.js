@@ -23,6 +23,7 @@ function setup() {
   textSize(32);
 
   noStroke();
+  noLoop();
 
 }
 
@@ -34,6 +35,10 @@ function draw() {
   fill(0, 255, 255);
   text("steps: " + steps, 650, 70);
 
+}
+
+function drawSquare(x,y) {
+  rect(x * ratioW, y * ratioH, ratioW, ratioH);
 }
 
 function createmappng(sizeX, sizeY, time = 0) {
@@ -117,14 +122,13 @@ class PlayArea {
   show() {
     fill(50);
     rect(0, 0, 50, 50);
-    for (let i = 0; i < this.size.x; i++) {
+    for (let x = 0; x < this.size.x; x++) {
 
-      for (let z = 0; z < this.size.y; z++) {
+      for (let y = 0; y < this.size.y; y++) {
         //this.map[i][z] = true;
-        fill((this.map[i][z]) ? 50 : 150);
-        rect(i * ratioW, z * ratioH, ratioW, ratioH);
-        fill(0, 255, 0);
-        rect(15 * ratioW, 24 * ratioH, ratioW, ratioH);
+        fill((this.map[x][y]) ? 50 : 150);
+        drawSquare(x,y);
+
 
 
 
