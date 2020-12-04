@@ -66,7 +66,7 @@ class Pathfinder {
       }
     }
     if (map.map[next.x][next.y]) {
-      console.log("tis a wall");
+      console.log("we need to do somthing here");
 
     }
     fill(0,255,120);
