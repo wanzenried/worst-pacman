@@ -10,3 +10,8 @@ the goal of this project is to produce a version of pacman, which will be worse,
 ## thing i want to learn during this project:
 * [ ] real time graphics changing
 * [ ] real time solids/boundaries/physics changing
+
+
+# Archived
+I have chosen to archive this repository, as i am no longer interested in writing javascript.
+This might change in the future, i promise nothing.
